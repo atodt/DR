@@ -18,7 +18,7 @@ services:
 
   app-php:
     build:
-      context: app1
+      context: ./app
       dockerfile: app/Dockerfile
     container_name: app-php
     volumes:

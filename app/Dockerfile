@@ -31,7 +31,7 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 WORKDIR /app
 
 # Copy existing application code to /var/www/symfony
-COPY app1 /app
+COPY . /app
 
 # Install Symfony CLI
 RUN curl -sS https://get.symfony.com/cli/installer | bash
