@@ -39,6 +39,7 @@ RUN mv /root/.symfony*/bin/symfony /usr/local/bin/symfony
 
 # Install Symfony dependencies
 RUN composer install --no-scripts --no-autoloader
+RUN composer update
 
 # Set appropriate file permissions for Symfony
 RUN chown -R www-data:www-data /app
