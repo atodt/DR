@@ -44,3 +44,16 @@ Follow the steps below to set up the project:
    # This builds images if they don't exist and starts the containers in the docker stack after.
    docker compose up -d --build
    ```
+
+- For testing of the Docker installation go to [http://localhost:8080](http://localhost:8080) 
+  in your browser to see the ``Symfony`` welcome screen.
+
+The API implementation should be working at this point
+
+## Usage
+The best way to use the API manually is to use [Postman](https://www.postman.com).
+
+To demonstrate the functionality a [Postman Collection](app/docs/DR.postman_collection.json)
+is included in the project.
+
+Start postman and import the collection to use the API.
