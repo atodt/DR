@@ -1,0 +1,24 @@
+services:
+
+  app-db:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    container_name: app_db
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: passwd
+      MARIADB_DATABASE: products
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - my_network
+
+volumes:
+  mariadb_data:
+
+networks:
+  my_network:
+    driver: bridge
