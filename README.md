@@ -11,12 +11,13 @@ Set up a MariaDB container using Docker to serve as the database for the applica
 
 ### 2. Develop a PHP Application with REST API
 Create a PHP application that provides a REST API for interacting with the MariaDB database.
+Implementation details in [APP README](app/docs/README.md)
 
 ### 3. Package the PHP Application in a Container
 Package the PHP application into a Docker container for easy deployment and scalability.
 
 ### 4. Implement Rate-Limit Feature
-Add a rate-limit feature to the REST API.
+Add a rate-limit feature to the REST API with limit testing
 
 ### 5. Version Control with GitHub
 Use GitHub for version control to manage and track changes to the project.
@@ -57,3 +58,6 @@ To demonstrate the functionality a [Postman Collection](app/docs/DR.postman_coll
 is included in the project.
 
 Start postman and import the collection to use the API.
+
+## To Do
+...

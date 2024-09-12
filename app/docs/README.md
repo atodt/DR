@@ -1,6 +1,7 @@
 # Implementation Details
 
 ## Implement a simple RESTful API managing products
+- Basic installation information in [BASE README](../../README.md)
 
 ### Freature Requirements/ Functionality
 1. Abrufen aller Produkte aus der Tabelle products (Aufgabe 1).
