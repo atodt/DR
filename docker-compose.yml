@@ -18,8 +18,8 @@ services:
 
   app-php:
     build:
-      context: ./app
-      dockerfile: Dockerfile
+      context: app1
+      dockerfile: app/Dockerfile
     container_name: app-php
     volumes:
       - ./app:/app
@@ -35,7 +35,6 @@ services:
       - "8080:80"
     volumes:
       - ./app:/app
-      - ./nginx/logs:/var/log/nginx
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - app-php

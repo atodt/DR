@@ -14,6 +14,10 @@ RUN apt-get update && apt-get install -y \
     libmemcached-dev \
     zlib1g-dev
 
+# Configure Git
+RUN git config --global user.email "andreas.todt@me.com" \
+    && git config --global user.name "Andreas Todt"
+
 # Install PHP extensions
 RUN docker-php-ext-install pdo pdo_mysql intl zip opcache
 
@@ -27,7 +31,7 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 WORKDIR /app
 
 # Copy existing application code to /var/www/symfony
-COPY . /app
+COPY app1 /app
 
 # Install Symfony CLI
 RUN curl -sS https://get.symfony.com/cli/installer | bash
