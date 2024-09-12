@@ -140,14 +140,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/api/products/6",
+					"raw": "{{host}}/api/products/1",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
 						"products",
-						"6"
+						"1"
 					]
 				}
 			},

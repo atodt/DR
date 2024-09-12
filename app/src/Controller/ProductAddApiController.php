@@ -52,9 +52,6 @@ class ProductAddApiController extends AbstractController
             if ($product instanceof Product) {
                 return $this->addSingleProduct($request, $product);
             }
-
-            return $this->json(['error' => 'Failed to add products.'], Response::HTTP_INTERNAL_SERVER_ERROR);
-
         } catch (\Exception $e) {
             $this->logger->error('Error adding products: ' . $e->getMessage());
 
@@ -120,7 +117,7 @@ class ProductAddApiController extends AbstractController
      * This method handles the addition of multiple product entities to the database.
      * It validates each product, persists them, and returns a JSON response indicating the result.
      *
-     * @param Product[] $products_arr An array of Product entities to be added.
+     * @param array<Product> $products_arr An array of Product entities to be added.
      *
      * @return JsonResponse A JSON response indicating the result of the operation.
      *                      - On success, returns a JSON response with the created products.
@@ -155,18 +152,16 @@ class ProductAddApiController extends AbstractController
     }
 
     /**
-     * Adds multiple products to the database.
+     * Validates and adds a product to the database.
      *
-     * This method handles the addition of multiple product entities to the database.
-     * It validates each product, persists them, and returns a JSON response indicating the result.
+     * This method validates the given product entity and, if valid, persists it to the database.
+     * If there are validation errors, it returns an array of error messages.
      *
-     * @param Product[] $products_arr An array of Product entities to be added.
+     * @param Product $product The product entity to be validated and added.
      *
-     * @return JsonResponse A JSON response indicating the result of the operation.
-     *                      - On success, returns a JSON response with the created products.
-     *                      - On failure, returns a JSON response with an error message.
+     * @return mixed Returns the created product entity on success, or an array of validation error messages on failure.
      */
-    private function addProduct(Product $product): Product|array
+    private function addProduct(Product $product): mixed
     {
         $errors = $this->validator->validate($product);
         if (count($errors) > 0) {
