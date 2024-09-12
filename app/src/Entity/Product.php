@@ -30,7 +30,7 @@ class Product
     private ?string $category = null;
 
     #[ORM\Column]
-    #[Assert\Type(type: "bool")]
+    #[Assert\Type(type: 'bool')]
     private ?bool $state = null;
 
     public function getId(): ?int

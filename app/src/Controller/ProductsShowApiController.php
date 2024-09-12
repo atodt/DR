@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Controller;
 
@@ -19,18 +20,28 @@ class ProductsShowApiController extends AbstractController
 
     public function __construct(
         private readonly LoggerInterface   $logger,
-        private readonly ProductRepository $repository
+        private readonly ProductRepository $repository,
     )
     {
     }
 
+    /**
+     * Handles the request to show a product by its ID.
+     *
+     * @param Request $request the HTTP request object containing the product ID
+     *
+     * @return JsonResponse a JSON response containing the product details or an error message
+     */
     #[Cache(maxage: 0, public: false, mustRevalidate: true)]
     public function __invoke(Request $request): JsonResponse
     {
-
         try {
-            $id = (int)$request->get('id');
-            $product = $this->repository->findById($id);
+            $id = $request->get('id');
+            if (!is_numeric($id)) {
+                return $this->json(['error' => 'Invalid product ID.'], Response::HTTP_BAD_REQUEST);
+            }
+
+            $product = $this->repository->findById((int)$id);
             if (!$product instanceof Product) {
                 return $this->sendNotFoundResponse();
             }
