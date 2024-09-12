@@ -39,6 +39,9 @@ RUN mv /root/.symfony*/bin/symfony /usr/local/bin/symfony
 
 # Install Symfony dependencies
 RUN composer install --no-scripts --no-autoloader
+
+# Allow Composer to run as root and update dependencies
+ENV COMPOSER_ALLOW_SUPERUSER=1
 RUN composer update
 
 # Set appropriate file permissions for Symfony
