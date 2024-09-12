@@ -1,4 +1,5 @@
 /.idea
+/nginx/logs
 
 # Cache and logs (Symfony2)
 /app/cache/*
