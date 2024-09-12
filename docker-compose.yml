@@ -1,0 +1,50 @@
+services:
+
+  app-db:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    container_name: app_db
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: passwd
+      MARIADB_DATABASE: products
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - my_network
+
+  app-php:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: app-php
+    volumes:
+      - ./app:/app
+    expose:
+      - 9000
+    networks:
+      - my_network
+
+  app-nginx:
+    image: nginx:latest
+    container_name: app-nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./app:/app
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app-php
+      - app-db
+    networks:
+      - my_network
+
+volumes:
+  mariadb_data:
+
+networks:
+  my_network:
+    driver: bridge
