@@ -37,13 +37,8 @@ Follow the steps below to set up the project:
 2. **Run the application:** 
    ```sh
    # This builds images if they don't exist and starts the containers in the docker stack after.
-   docker compose up -d
-   ```
-
-3. **To start containers with rebuilding images**
-   ```sh
-   # This builds images if they don't exist and starts the containers in the docker stack after.
    docker compose up -d --build
+   docker exec -ti app-php bash -c "composer update"
    ```
 
 - For testing of the Docker installation go to [http://localhost:8080](http://localhost:8080) 
@@ -60,4 +55,11 @@ is included in the project.
 Start postman and import the collection to use the API.
 
 ## To Do
-...
+- integrate memchached correctly into symfony for persistend rate limit storage
+- Finish request rate limiting and implement rate limit test 
+- Fix installer not to require an extra "composer update"
+- Add unit, functional and EtoE tests
+- Finish documentation
+- More code cleanup 
+- Save built images to docker repository
+- Use images from docker repository to start containers 
