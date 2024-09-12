@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -25,8 +26,7 @@ class ProductUpdateApiController extends AbstractController
         private readonly ProductRepository   $repository,
         private readonly ValidatorInterface  $validator,
         private readonly SerializerInterface $serializer,
-    )
-    {
+    ) {
     }
 
     /**

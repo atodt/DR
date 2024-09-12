@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -20,9 +21,8 @@ class ProductsShowApiController extends AbstractController
 
     public function __construct(
         private readonly LoggerInterface   $logger,
-        private readonly ProductRepository $repository,
-    )
-    {
+        private readonly ProductRepository $repository
+    ) {
     }
 
     /**
